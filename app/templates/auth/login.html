@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+<br>
+<br>
+<br>
+<br>
+{% block content%}
+<div class="div"
+    style="background-image: url('https://images.unsplash.com/photo-1575680850636-6534e1b7603e?ixlib=rb-1.2.1&ixidhttps://images.unsplash.com/photo-1575680850636-6534e1b7603e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
+    <div class="container pt-5 mt-5" style="font-size: 30px; background-color: blanchedalmond; width: 50vw;">
+        <div class="row pt-5 mt-5">
+
+            <div class="col-md-2"> </div>
+
+            <div class="col-md-8">
+                <!-- Flash message -->
+                {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger">
+                    <button type="button" class="close btn btn-success" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+
+                {% endfor %}
+                <!-- Login form  -->
+
+                {{ wtf.quick_form(login_form) }}
+
+                <p style="color: brown;"> Don't have an account? <a href="{{url_for('auth.register')}}">Sign up here</a>
+                </p>
+
+            </div>
+
+            <div class="col-md-2"> </div>
+
+        </div>
+    </div>
+</div>
+
+
+{%endblock%}
