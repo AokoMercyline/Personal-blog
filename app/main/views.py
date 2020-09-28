@@ -14,11 +14,6 @@ def index():
     return render_template('index.html', title = title)
 
 
-
-
-
-
-
 @main.route('/user/<uname>')
 @login_required
 def profile(uname):
@@ -62,3 +57,12 @@ def update_pic(uname):
         user_photo = PhotoProfile(pic_path = path,user = user)
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/contact')
+def contact():
+    '''
+    View root page function that returns the contact page and its data
+    '''
+    title = ''
+    return render_template('contact.html', title = title)
