@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            {% for post in posts %}
+            <h2>{{ post.post_title }}</h2>
+            <p>{{ post.description}}</p>
+            <h6 class="post-name">Posted by {{post.author.username}}</h6>
+            <p class="date text-muted">Posted on - {{post.date.strftime('%Y-%m-%d')}}</p>
+            <a href="{{ url_for('main.view', id=post.id) }}" class="btn btn-sm btn-info"> <i class="fa fa-eye"></i> View
+                more</a>
+            <a href="{{ url_for('main.view', id=post.id) }}" class="btn btn-sm btn-success"><i
+                    class="fa fa-comment"></i> Comment</a>
+            {% endfor %}
+        </div>
+        <div class="col-md-8">
+            <h2>{{ quote.author}}</h2>
+            <h2>{{quote.quote}}</h2>
+            <a href="{{quote.permalink}}" target="_blank">visit quote</a>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}
