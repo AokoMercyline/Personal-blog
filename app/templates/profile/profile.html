@@ -29,7 +29,7 @@
       {% if user.profile_pic_path %}
 
       <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail" width="300px"
-        height="100px" style="border-radius: 100px;">
+        height="100px" style="border-radius: 50%;">
 
       {%else%}
       <p style="font-size: 30px;">No profile picture</p>
