@@ -67,7 +67,7 @@ class Post(db.Model):
     post_title = db.Column(db.String(255), index=True)
     description = db.Column(db.String(255), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    
+    post = db.relationship('Comment', backref="post", passive_deletes=True)
     def save_post(self):
         db.session.add(self)
         db.session.commit()
@@ -82,19 +82,23 @@ class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.Text())
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete="CASCADE"))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
+    
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
+        
     @classmethod
     def get_comments(cls, post_id):
         comments = Comment.query.filter_by(post_id=post_id).all()
         return comments
+    
     def delete(self):
         db.session.delete(self)
         db.session.commit()
+        
     def __repr__(self):
         return f'Comments: {self.comment}'
     
