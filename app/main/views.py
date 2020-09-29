@@ -3,7 +3,7 @@ from . import main
 from ..requests import get_quotes
 from flask_login import login_required
 from .forms import UpdateProfile,PostForm,CommentForm
-from ..models import User,PhotoProfile,Post,Comment
+from ..models import User,PhotoProfile,Post,Comment,Subscribe
 from .. import db,photos
 from flask_login import login_required, current_user
 import markdown2
@@ -60,15 +60,6 @@ def update_pic(uname):
         user_photo = PhotoProfile(pic_path = path,user = user)
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
-
-
-# @main.route('/contact')
-# def contact():
-#     '''
-#     View root page function that returns the contact page and its data
-#     '''
-#     title = ''
-#     return render_template('contact.html', title = title)
 
 
 @main.route('/post/new', methods=['GET', 'POST'])
@@ -150,3 +141,17 @@ def comment(id):
         new_comment = Comment(post_id=id, comment=comment.form.data, author=current_user)
         new_comment.save_comment()
     return render_template('view.html', comment_form=comment_form)
+
+#sSubscribe
+@main.route('/subscribe', methods=['GET', 'POST'])
+def subscribe():
+    '''
+    Function to send email upon subscription
+    '''
+    if request.method == 'POST':
+        email = request.form['email']
+        new_email = Subscribe(email=email)
+        db.session.add(new_email)
+        db.session.commit()
+        flash('Thank you for your subscription')
+        return redirect(url_for('main.index'))

@@ -12,27 +12,88 @@
 
 
 
-<div class="container-fluid" style="background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)), url('https://images.unsplash.com/photo-1575680850636-6534e1b7603e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
-   
-        <div class="row">
-            <h2 style="color: white;text-align: center; padding-top: 50px; font-family: 'Press Start 2P', cursive;
+<div class="container-fluid" style="background-color: #778beb;">
+    <div class="row">
+        <h2 style="color: white;text-align: center; padding-top: 50px; font-family: 'Press Start 2P', cursive;
                 font-family: 'Yellowtail', cursive; font-weight: 900;">WELCOME TO MY PERSONAL BLOG</h2>
+                <hr style="width: 350px;">
 
-            {% if current_user.is_anonymous%}
+        {% if current_user.is_anonymous%}
 
-            {%endif%}
-            </ul>
-        </div>
-   
-    <div class="row" style="text-align: center;padding-top: 100px;">
-        <h2 style="color:white;">{{ quotes.author}}</h2>
-        <p style="color: white; font-size: 20px;">{{quotes.quote}}</p>
+        {%endif%}
+        </ul>
     </div>
-</div>
-<p style="font-size: 30px; color:brown; text-align: center;font-family: 'Bangers', cursive;">Designby@2020 AokoMercyline</p>
+ <!-- Main Content -->
+    <div class="container-fluid" style="padding-top:120px ;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 style="color: white;">Quote of the day...</h2>
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote text-center">
+                            <p class="mb-0">{{quotes.quote}}</p>
+                            <footer style="color: white;" class="blockquote-footer"><cite>{{quotes.author}}</cite></footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg- col-md-6 mx- tex-center">
+                {% for post in posts %}
+                <div class="post-preview text-center">
+                    <a href="{{ url_for('main.post', post_id=post.id)}}">
+                        <h2 class="post-title">
+                            {{post.title}}
+                        </h2>
+                        <h3 class="post-subtitle">
+                            {{post.subtitle}}
+                        </h3>
+                    </a>
+                    <p class="post-meta">Posted by {{post.user.username}} on {{post.date.strftime('%B %d, %Y')}}</p>
+                </div>
+               
+                {% endfor %}
+                
+
+            </div>
+            <div class="col-md-3">
+                <div class="w-50">
+                    {% for message in get_flashed_messages() %}
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <form action="{{url_for('main.subscribe')}}" method="POST">
+                        <div class="form-group">
+                            <input type="email" form-control name="email" style="border-radius:10px;"
+                                placeholder="Enter email..." required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="subscribe" form-control class="bg-danger text-light"
+                                style="border-radius:10px;">
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div" style="padding-top:150px ;">
+        <p style="font-size: 30px; color:brown; text-align: center;font-family: 'Bangers', cursive;">Designby@2020
+            AokoMercyline
+        </p>
+
+    </div>
 
 
 
 
 
-{% endblock %}
+
+    {% endblock %}
