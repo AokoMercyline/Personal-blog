@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: #778beb;">
 
   <div class="row">
 
@@ -29,7 +29,7 @@
       {% if user.profile_pic_path %}
 
       <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail" width="300px"
-        height="100px" style="border-radius: 50%;">
+        height="100px">
 
       {%else%}
       <p style="font-size: 30px;">No profile picture</p>
