@@ -22,7 +22,7 @@ As a user of the web application you will be able to:
 * Create an account
 * Log in
 * Post a blog
-* Comment on a pitch
+* Comment on a blog
 * See comments posted on each individual blog
 * Edit your profile i.e will be able to add a short bio about yourself and a profile picture
 
@@ -63,7 +63,7 @@ $ code .
 
 * Install all the dependencies from the requirements.txt file by running python3.8 pip install -r requirements.txt
 
-* Create a .environment file in the root of the folder and add the following code:
+* Create an .environment file in the root of the folder and add the following code:
 
   export MAIL_USERNAME=<your-email-address>
   export MAIL_PASSWORD=<your-email-password>
