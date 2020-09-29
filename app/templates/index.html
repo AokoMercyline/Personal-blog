@@ -9,24 +9,30 @@
 {% endblock %}
 
 {% block content%}
-<div class="div"
-    style="background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)), url('https://images.unsplash.com/photo-1575680850636-6534e1b7603e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
 
 
-    <div>
-        <div class="container-fluid">
+
+<div class="container-fluid" style="background-image: linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)), url('https://images.unsplash.com/photo-1575680850636-6534e1b7603e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-size: cover; height: 80vh;">
+   
+        <div class="row">
             <h2 style="color: white;text-align: center; padding-top: 50px; font-family: 'Press Start 2P', cursive;
-        font-family: 'Yellowtail', cursive; font-weight: 900;">WELCOME TO MY PERSONAL BLOG</h2>
+                font-family: 'Yellowtail', cursive; font-weight: 900;">WELCOME TO MY PERSONAL BLOG</h2>
 
             {% if current_user.is_anonymous%}
-            <!-- <li  class="btn btn-info" style="font-size: 20px;"><a href="{{url_for('auth.login')}}" class="text-light"><strong>Sign In</strong></a></li> -->
+
             {%endif%}
             </ul>
         </div>
-        <p style="font-size: 30px; color:white; text-align: center;font-family: 'Bangers', cursive; margin-top: 130px;
-    padding-top: 20%;  ">All right reserved by @2020 AokoMercyline(blog)</p>
+   
+    <div class="row" style="text-align: center;padding-top: 100px;">
+        <h2 style="color:white;">{{ quotes.author}}</h2>
+        <p style="color: white; font-size: 20px;">{{quotes.quote}}</p>
     </div>
 </div>
+<p style="font-size: 30px; color:brown; text-align: center;font-family: 'Bangers', cursive;">All right
+    reserved by @2020 AokoMercyline(blog)</p>
+
+
 
 
 
