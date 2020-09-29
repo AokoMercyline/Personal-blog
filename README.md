@@ -75,6 +75,18 @@ Edit the configuration instance in manage.py from development to production
   $ chmod a+x start.sh
   $ ./start.sh
 
+ ## Create DB
+* Create a psql databases
+
+* CREATE DATABASE blog;
+* CREATE DATABASE blog_test;
+* Create the tables and run the migrations:
+
+* pip install flask-migrate
+* python3 manage.py db init
+* python3 manage.py db migrate -m "Initial Migration"
+* python3 manage.py db upgrade
+
 
 ## Technologies Used
 * Python3.8
