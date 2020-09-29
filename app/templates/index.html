@@ -24,7 +24,7 @@
         </ul>
     </div>
  <!-- Main Content -->
-    <div class="container-fluid" style="padding-top:120px ;">
+    <div class="container-fluid" style="padding-top:120px ; padding-left: 50px;">
         <div class="row">
             <div class="col-md-3">
                 <div class="card">
@@ -58,6 +58,7 @@
 
             </div>
             <div class="col-md-3">
+                <h2 style="color: white; font-size: 20px;">Please subscribe to my page</h2>
                 <div class="w-50">
                     {% for message in get_flashed_messages() %}
                     <div class="alert alert-success">
@@ -84,16 +85,11 @@
     </div>
 
 
-    <div class="div" style="padding-top:150px ;">
+    <div class="div" style="padding-top:100px ;">
         <p style="font-size: 30px; color:brown; text-align: center;font-family: 'Bangers', cursive;">Designby@2020
             AokoMercyline
         </p>
 
     </div>
 
-
-
-
-
-
-    {% endblock %}
+{% endblock %}
